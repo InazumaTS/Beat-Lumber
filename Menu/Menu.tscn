@@ -1,0 +1,129 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Music/Picking Banjo - no copyright bluegrass, royalty free country music.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Menu/Logo.png" type="Texture" id=3]
+[ext_resource path="res://Levels/1429807.jpg" type="Texture" id=4]
+[ext_resource path="res://Menu/chunk wood.png" type="Texture" id=5]
+[ext_resource path="res://Menu/Clouds.png" type="Texture" id=6]
+[ext_resource path="res://Menu/buttonlogo.png" type="Texture" id=7]
+[ext_resource path="res://Menu/buttonlogopressed.png" type="Texture" id=8]
+[ext_resource path="res://Menu/buttonlogohover.png" type="Texture" id=9]
+
+[sub_resource type="Environment" id=1]
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_blend_mode = 0
+glow_hdr_threshold = 1.09
+glow_bicubic_upscale = true
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="TextureRect" parent="."]
+margin_right = 2882.0
+margin_bottom = 1801.0
+rect_scale = Vector2( 0.12, 0.12 )
+texture = ExtResource( 4 )
+
+[node name="Clouds" type="Sprite" parent="."]
+position = Vector2( 33, 6 )
+scale = Vector2( 1.84375, 1.84375 )
+texture = ExtResource( 6 )
+
+[node name="Clouds2" type="Sprite" parent="."]
+position = Vector2( 81, 2 )
+scale = Vector2( 1.84375, 1.84375 )
+texture = ExtResource( 6 )
+
+[node name="Clouds3" type="Sprite" parent="."]
+position = Vector2( 268, 15 )
+scale = Vector2( 1.84375, 1.84375 )
+texture = ExtResource( 6 )
+
+[node name="Clouds4" type="Sprite" parent="."]
+position = Vector2( 197.5, 84.5 )
+scale = Vector2( 1.84375, 1.84375 )
+texture = ExtResource( 6 )
+
+[node name="Clouds5" type="Sprite" parent="."]
+position = Vector2( 226.5, 82.5 )
+scale = Vector2( 1.84375, 1.84375 )
+texture = ExtResource( 6 )
+
+[node name="Clouds6" type="Sprite" parent="."]
+position = Vector2( 243, 153 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 6 )
+
+[node name="Clouds7" type="Sprite" parent="."]
+position = Vector2( 81, 64 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 6 )
+
+[node name="Easy" type="TextureButton" parent="."]
+margin_left = 122.0
+margin_top = 119.0
+margin_right = 193.0
+margin_bottom = 136.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+expand = true
+
+[node name="Buttonlogo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 157.667, 107 )
+scale = Vector2( 1.66667, 1.66667 )
+texture = ExtResource( 7 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Logo" type="Sprite" parent="WorldEnvironment"]
+position = Vector2( 37, 65 )
+scale = Vector2( 1.875, 1.875 )
+texture = ExtResource( 3 )
+offset = Vector2( 67.7333, -6.93333 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 29.0
+margin_bottom = 211.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = -14.0
+margin_right = 15.0
+margin_bottom = 211.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 289.0
+margin_right = 318.0
+margin_bottom = 211.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 304.0
+margin_right = 333.0
+margin_bottom = 211.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+
+[connection signal="pressed" from="Easy" to="." method="_on_Easy_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
